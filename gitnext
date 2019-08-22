@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CURRENT=`git log --reverse --ancestry-path HEAD..master | head -n1 | cut -d" " -f2`
+git checkout -f $CURRENT
+NEXT=`git log --reverse --ancestry-path HEAD..master | head -n1 | cut -d" " -f2`
+
+
+git reset --hard $NEXT
+git reset --soft $CURRENT
+git reset HEAD

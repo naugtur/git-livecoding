@@ -1,0 +1,31 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"presentation": {
+		"reveal": "never",
+		"panel": "dedicated"
+	},
+	"tasks": [
+		{
+			"label": "gitnext",
+			"type": "shell",
+			"command": "./.vscode/gitnext",
+			"options":{
+				"env":{
+					"BRANCH": "master"
+				}
+			}
+		},
+		{
+			"label": "gitback",
+			"type": "shell",
+			"command": "./.vscode/gitback",
+			"options":{
+				"env":{
+					"BRANCH": "master"
+				}
+			}
+		}
+	]
+}

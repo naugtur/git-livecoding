@@ -8,29 +8,27 @@ a tool to show commits from history as if they were about to be made
 
 ### Livecoding without typing
 
-Create history on master branch to go through step-by-step  
+Create history to go through step-by-step  
 Go through the livecoding without typing the code and risking typos  
 Still be able to show changes step by step in your IDE
 
 #### In terminal
 ```bash
-export BRANCH=main # defaults to master if not set
 git checkout -f INITIAL_REF_TO_START_WITH
 gitnext
 # show the code as if the next commit was written but not committed yet
 gitnext
-# another step towards the HEAD of master branch
-#someone asked a question about the previous state
+# switch to a newer commit and display it like it's just been written
+# someone asked a question about the previous state, go back
 gitback
 # return to clean state
-git checkout -f master
+git checkout -f main
 
 ```
 
 #### VSCode tasks
 
  - Copy the tasks and scripts from `.vscode` to your project's `.vscode`
- - Change the branch name in both tasks
  - Set these keybindings for convenience
 
 ```

@@ -1,11 +1,9 @@
 #!/bin/bash
-COMPAREWITH=${BRANCH:-master}
 
-CURRENT=`git log -n1 HEAD~1 | head -n1 | cut -d" " -f2`
-git checkout -f $CURRENT
-NEXT=`git log --reverse --ancestry-path HEAD..${COMPAREWITH} | head -n1 | cut -d" " -f2`
+IDNOW=`git rev-list -n1 HEAD`
+IDSHOW=`git rev-list -n1 HEAD~1`
 
-
-git reset --hard $NEXT
-git reset --soft $CURRENT
+git checkout -f $IDSHOW
+git reset --hard $IDNOW
+git reset --soft $IDSHOW
 git reset HEAD

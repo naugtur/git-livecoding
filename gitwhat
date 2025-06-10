@@ -2,9 +2,12 @@
 
 # If argument provided, checkout that ref first
 if [ $# -eq 1 ]; then
-    git checkout -- .
-    git checkout -f $1
+    git checkout -q -- . >/dev/null
+    git checkout -q -f "$1" >/dev/null
 fi
+
+echo 'Reviving the changes form:'
+git log -n1
 
 # Get current commit hash
 CURRENT=`git rev-parse HEAD`
@@ -12,5 +15,7 @@ CURRENT=`git rev-parse HEAD`
 PARENT=`git rev-parse HEAD^`
 
 # Reset to parent commit, then apply changes from current commit as unstaged changes
-git reset --hard $PARENT
-git restore --source=$CURRENT .
+git reset --hard $PARENT >/dev/null
+git restore --source=$CURRENT . >/dev/null
+
+git status -s

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# If argument provided, checkout that ref first
+if [ $# -eq 1 ]; then
+    git checkout -- .
+    git checkout -f $1
+fi
+
+# Get current commit hash
+CURRENT=`git rev-parse HEAD`
+# Get parent commit hash
+PARENT=`git rev-parse HEAD^`
+
+# Reset to parent commit, then apply changes from current commit as unstaged changes
+git reset --hard $PARENT
+git restore --source=$CURRENT .
